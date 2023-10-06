@@ -1,25 +1,34 @@
-import { FaHandPaper, FaHandRock, FaHandScissors } from "react-icons/fa";
 import { GameMoves } from "@/app/page";
+import Paper from "./signs/paper";
+import Rock from "./signs/rock";
+import Scissor from "./signs/scissor";
 
 export default function Results({
   moves,
   win,
   draw,
-  playAgain
+  playAgain,
 }: {
   moves: { player: GameMoves; computer: GameMoves };
   win: boolean;
   draw: boolean;
   playAgain: () => void;
 }) {
+  const getSign = (colStart: "1" | "2" | "3", sign?: GameMoves) => {
+    switch (sign) {
+      case GameMoves.ROCK:
+        return <Rock colStart={colStart} selectable={false} />;
+      case GameMoves.PAPER:
+        return <Paper colStart={colStart} selectable={false} />;
+      case GameMoves.SCISSOR:
+        return <Scissor colStart={colStart} selectable={false} />;
+    }
+  };
+
   return (
     <div className="flex justify-center items-center flex-col w-full">
       <div className="grid grid-cols-3 gap-5 pt-10">
-        <div className="grid place-items-center col-start-1 rounded-full bg-slate-200 cursor-pointer hover:bg-red-300 ease-out duration-300">
-          <div className="grid place-items-center w-[150px] rounded-full aspect-square border-[10px] border-red-500">
-            <FaHandRock size="4rem" color="#1F3556" />
-          </div>
-        </div>
+        {getSign("1", moves.player)}
 
         <div className="flex flex-col justify-center items-center col-start-2">
           <h1 className="text-2xl font-bold">
@@ -33,11 +42,7 @@ export default function Results({
           </button>
         </div>
 
-        <div className="grid place-items-center col-start-3 rounded-full bg-slate-200 cursor-pointer hover:bg-green-300 ease-out duration-300">
-          <div className="grid place-items-center w-[150px] rounded-full aspect-square border-[10px] border-green-500">
-            <FaHandPaper size="4rem" color="#1F3556" />
-          </div>
-        </div>
+        {getSign("3", moves.computer)}
       </div>
     </div>
   );
