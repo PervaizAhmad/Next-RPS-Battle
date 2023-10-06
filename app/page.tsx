@@ -1,6 +1,7 @@
 "use client";
 
 import Moves from "@/components/moves";
+import Results from "@/components/results";
 import ScoreBoard from "@/components/scoreBoard";
 import { useState } from "react";
 
@@ -11,6 +12,7 @@ export enum GameMoves {
 }
 
 export default function Home() {
+  const [showResults, setShowResults] = useState(true);
   const [playerScore, setPlayerScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
   
@@ -28,7 +30,19 @@ export default function Home() {
       >
         RESET SCORE
       </button>
-      <Moves />
+      {showResults ? (
+        <Results
+          moves={{
+            player: GameMoves.ROCK,
+            computer: GameMoves.ROCK,
+          }}
+          win={false}
+          draw={true}
+          playAgain={() => setShowResults(false)}
+        />
+      ) : (
+        <Moves />
+      )}
     </main>
   );
 }
