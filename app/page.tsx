@@ -1,7 +1,8 @@
 "use client";
 
+import Moves from "@/components/moves";
 import ScoreBoard from "@/components/scoreBoard";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export enum GameMoves {
   ROCK = 0,
@@ -27,6 +28,7 @@ export default function Home() {
       >
         RESET SCORE
       </button>
+      <Moves />
     </main>
   );
 }
