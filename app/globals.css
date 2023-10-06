@@ -17,11 +17,11 @@
 }
 
 body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: #1F3556;
+  background: radial-gradient(at center, #1F3556, #0D1545);
 }
