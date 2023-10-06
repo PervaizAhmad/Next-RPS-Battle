@@ -3,7 +3,7 @@
 import Moves from "@/components/moves";
 import Results from "@/components/results";
 import ScoreBoard from "@/components/scoreBoard";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
 export enum GameMoves {
   ROCK = 0,
@@ -56,13 +56,9 @@ export default function Home() {
     }
 
     if (win) {
-      console.warn("win");
       setPlayerScore(playerScore + 1);
     } else if (playerMove !== computerMove) {
-      console.warn("loss");
       setComputerScore(computerScore + 1);
-    } else {
-      console.warn("draw");
     }
 
     // update state --> useEffect will be triggered
