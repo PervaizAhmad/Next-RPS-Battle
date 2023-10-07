@@ -5,21 +5,15 @@ import Results from "@/components/results";
 import ScoreBoard from "@/components/scoreBoard";
 import { useEffect, useState } from "react";
 
-export enum GameMoves {
-  ROCK = 0,
-  PAPER = 1,
-  SCISSOR = 2,
-}
-
 export default function Home() {
   const [showResults, setShowResults] = useState(false);
   const [playerScore, setPlayerScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
   const [moves, setMoves] = useState<{
-    player: GameMoves;
-    computer: GameMoves;
+    player: number;
+    computer: number;
     win: boolean;
-  }>({ player: GameMoves.ROCK, computer: GameMoves.ROCK, win: false });
+  }>({ player: 0, computer: 0, win: false });
 
   const [isFirstMount, setIsFirstMount] = useState(true); // ref to store first mount flag
 
@@ -30,6 +24,7 @@ export default function Home() {
     } else {
       setShowResults(true);
     }
+    // eslint-disable-next-line
   }, [moves]);
 
   const resetScore = (): void => {
@@ -37,9 +32,9 @@ export default function Home() {
     setComputerScore(0);
   };
 
-  const calculateResults = (playerMove: GameMoves): void => {
+  const calculateResults = (playerMove: number): void => {
     // generate a random move
-    const computerMove: GameMoves = Math.floor(Math.random() * 3);
+    const computerMove: number = Math.floor(Math.random() * 3);
 
     // check if player won
     let win = false;

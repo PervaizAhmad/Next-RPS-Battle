@@ -1,4 +1,3 @@
-import { GameMoves } from "@/app/page";
 import Paper from "./signs/paper";
 import Rock from "./signs/rock";
 import Scissor from "./signs/scissor";
@@ -9,19 +8,19 @@ export default function Results({
   draw,
   playAgain,
 }: {
-  moves: { player: GameMoves; computer: GameMoves };
+  moves: { player: number; computer: number };
   win: boolean;
   draw: boolean;
   playAgain: () => void;
 }) {
-  const getSign = (colStart: "1" | "2" | "3", sign?: GameMoves) => {
+  const getSign = (colStart: "1" | "2" | "3", sign?: number) => {
     switch (sign) {
-      case GameMoves.ROCK:
-        return <Rock colStart={colStart} selectable={false} />;
-      case GameMoves.PAPER:
-        return <Paper colStart={colStart} selectable={false} />;
-      case GameMoves.SCISSOR:
-        return <Scissor colStart={colStart} selectable={false} />;
+      case 0:
+        return <Rock colStart={colStart} selectable={false} makeMove={(sign: number) => {}} />;
+      case 1:
+        return <Paper colStart={colStart} selectable={false} makeMove={(sign: number) => {}} />;
+      case 2:
+        return <Scissor colStart={colStart} selectable={false} makeMove={(sign: number) => {}} />;
     }
   };
 

@@ -1,4 +1,3 @@
-import { GameMoves } from "@/app/page";
 import Paper from "./signs/paper";
 import Rock from "./signs/rock";
 import Scissor from "./signs/scissor";
@@ -6,7 +5,7 @@ import Scissor from "./signs/scissor";
 export default function Moves({
   makeMove,
 }: {
-  makeMove: (sign: GameMoves) => void;
+  makeMove: (sign: number) => void;
 }) {
   return (
     <div className="flex justify-center items-center flex-col w-full">
